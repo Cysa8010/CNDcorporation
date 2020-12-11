@@ -94,12 +94,34 @@ public class SPlayerControll : SIUnitController
             turnValue_ = 0.5f;
         }
 
+        bool LTriggerKey = false;
+        bool RTriggerKey = false;
+
+        if(!LTriggerFlag&&0<Input.GetAxis("LTrigger"))
+        {
+            LTriggerKey = true;
+            LTriggerFlag = true;
+        }
+        if (!RTriggerFlag && 0 < Input.GetAxis("RTrigger"))
+        {
+            RTriggerKey = true;
+            RTriggerFlag = true;
+        }
+        if(Input.GetAxis("LTrigger")==0)
+        {
+            LTriggerFlag = false;
+        }
+        if (Input.GetAxis("RTrigger") == 0)
+        {
+            RTriggerFlag = false;
+        }
+
         // 武器
-        if (Input.GetKey(KeyCode.Mouse0))//MouseLeft
+        if (Input.GetKeyDown(KeyCode.Mouse0) || LTriggerKey)//MouseLeft
         {
             state_ |= SDroneControll.ControllState.ACTION1;
         }
-        if (Input.GetKey(KeyCode.Mouse1))//MouseLeft
+        if (Input.GetKeyDown(KeyCode.Mouse1) || RTriggerKey)//MouseLeft
         {
             state_ |= SDroneControll.ControllState.ACTION2;
         }
@@ -109,4 +131,7 @@ public class SPlayerControll : SIUnitController
 
     [SerializeField]
     private float speed = 1.0f;
+
+    private bool LTriggerFlag = false;
+    private bool RTriggerFlag = false;
 }

@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Cysa/cysaSandBox.unity
+    guid: 66fb19748b0ffb840ab6d03b68d5006e
   m_configObjects: {}
