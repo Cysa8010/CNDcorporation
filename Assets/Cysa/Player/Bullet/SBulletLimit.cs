@@ -17,6 +17,9 @@ public class SBulletLimit : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(transform.gameObject);
+        if(!collision.transform.CompareTag("Player"))
+        {
+            Destroy(transform.gameObject);
+        }
     }
 }
