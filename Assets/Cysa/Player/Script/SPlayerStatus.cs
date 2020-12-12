@@ -52,7 +52,8 @@ public class SPlayerStatus : MonoBehaviour
         {
             direction.y = -1f;
         }
-        Translate(direction);
+        //Translate(direction);
+        TranslateInertia(direction);
 
         float r = 0f;
         if(Input.GetKey(KeyCode.Q)||gamepad.LRot.press)
@@ -97,6 +98,17 @@ public class SPlayerStatus : MonoBehaviour
         //move *= 0.99f;
         //transform.localPosition += move;
         transform.localPosition += vec * speed * Time.deltaTime;
+    }
+    void TranslateInertia(Vector3 direction)
+    {
+        // 各軸移動量の算出
+        Vector3 vec = Vector3.zero;
+        vec += transform.forward * direction.z;
+        vec += transform.right * direction.x;
+        vec += transform.up * direction.y;
+
+        transform.GetComponent<Rigidbody>().AddForce(speed * Time.deltaTime * vec * 10f);
+        transform.GetComponent<Rigidbody>().velocity *= 0.99f;
     }
 
     // 旋回
