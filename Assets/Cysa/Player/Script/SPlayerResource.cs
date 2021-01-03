@@ -41,7 +41,7 @@ public class SPlayerResource : MonoBehaviour
 
     bool LoadDataFile()
     {
-        Debug.Log("まだセーブデータの読み込みを作っていません!!");
+        Debug.Log("まだセーブデータの読み込みを作っていません!! 参照先>" + saveData);
         return false;
         //return true;
     }
@@ -150,12 +150,12 @@ public class SPlayerResource : MonoBehaviour
 
     /* プレイヤーの各リソース */
     [SerializeField]
-    private GameObject[] body;
+    private GameObject[] body = null;
     [SerializeField]
-    private GameObject[] propeller;
+    private GameObject[] propeller = null;
     [SerializeField]
-    private GameObject[] weapon;
+    private GameObject[] weapon = null;
 
     /* 参照エラー用NullObject */
-    private GameObject NoBody;
+    private GameObject NoBody = null;
 }

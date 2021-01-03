@@ -44,7 +44,7 @@ public class SWriter : MonoBehaviour
         file += path;
         return true;
 
-        BinaryWriter bw = null;
+        /*BinaryWriter bw = null;
         try
         {
             try
@@ -66,7 +66,7 @@ public class SWriter : MonoBehaviour
         catch
         {
             Debug.Log("Writing file Error!!");
-        }
+        }*/
     }
     void Write()
     {
@@ -82,9 +82,9 @@ public class SWriter : MonoBehaviour
             {
                 bw = new BinaryWriter(new FileStream(path, FileMode.Create));
                 bw.Write((Int16)bodyNum);
-                bw.Write((Int16)100);
-                bw.Write((Int16)100);
-                bw.Write((Int16)100);
+                bw.Write((Int16)propellerNum);
+                bw.Write((Int16)weaponNum);
+                //bw.Write((Int16)100);
             }
             finally
             {
@@ -131,7 +131,5 @@ public class SWriter : MonoBehaviour
     [SerializeField]// プロペラ
     private int propellerNum = 0;
     [SerializeField]// 武器
-    private int leftWeaponNum = 0;
-    [SerializeField]// 武器
-    private int rightWeaponNum = 0;
+    private int weaponNum = 0;
 }
