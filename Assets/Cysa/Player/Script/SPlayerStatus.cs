@@ -9,79 +9,118 @@ public class SPlayerStatus : MonoBehaviour
     {
         gamepad = transform.gameObject.AddComponent<SGamePadAdjuster>();
         //emitter = transform.Find(@"Body\Weapon\Emitter").gameObject;
+        pp = new SPropeller();
+        pp.Initialize(transform.Find("Body/PropellerFL"), transform.Find("Body/PropellerFR"),
+            transform.Find("Body/PropellerBL"), transform.Find("Body/PropellerBR"));
+
+        power_on = true;
     }
 
     // Update is called once per frame
+    /* Update func
+     * Key Update => Apply
+     */
     void Update()
     {
         // 今は簡易的に操作を直書き
         // 今後どうにかする
 
+        // キー処理
         Vector3 direction = Vector3.zero;
-        // Left
-        if (Input.GetKey(KeyCode.A) || gamepad.Left.press)
+        float r = 0f;
+        bool isShot = false;
+
+        if(power_on)
         {
-            direction.x = -1f;
-        }
-        // Right
-        if (Input.GetKey(KeyCode.D) || gamepad.Right.press)
-        {
-            direction.x = 1f;
+            // Shot
+            if (Input.GetKeyDown(KeyCode.Mouse1) || gamepad.RTrigger.trigger)
+            {
+                isShot = true;
+                Shot();
+            }
+
+            // PowerAccele
+            if (Input.GetKey(KeyCode.Space) || gamepad.LTrigger.press)
+            {
+                pp.Accele(gamepad.LTrigger.value);
+                // ここにアクセル的なやつ
+                // 連動するのはドローンの起動レベルとプロペラの回転量
+                //transform.gameObject.GetComponent<Rigidbody>().useGravity = false;
+                //transform.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                //transform.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 12f,0)*gamepad.LTrigger.value);
+            }
+            else
+            {
+                //transform.gameObject.GetComponent<Rigidbody>().useGravity = true;
+                //Translate(Vector3.down);
+            }
+
+            if (pp.take_off)
+            {
+                // Left
+                if (Input.GetKey(KeyCode.A) || gamepad.Left.press)
+                {
+                    direction.x = -1f;
+                }
+                // Right
+                if (Input.GetKey(KeyCode.D) || gamepad.Right.press)
+                {
+                    direction.x = 1f;
+                }
+
+                // Front
+                if (Input.GetKey(KeyCode.W) || gamepad.Front.press)
+                {
+                    direction.z = 1f;
+                }
+
+                // Back
+                if (Input.GetKey(KeyCode.S) || gamepad.Back.press)
+                {
+                    direction.z = -1f;
+                }
+
+                // Up
+                if (Input.GetKey(KeyCode.R) || gamepad.Up.press)
+                {
+                    direction.y = 1f;
+                }
+
+                // Down
+                if (Input.GetKey(KeyCode.F) || gamepad.Down.press)
+                {
+                    direction.y = -1f;
+                }
+
+                // Turn
+                if (Input.GetKey(KeyCode.Q) || gamepad.LRot.press)
+                {
+                    r += -1f;
+                }
+                if (Input.GetKey(KeyCode.E) || gamepad.RRot.press)
+                {
+                    r += 1f;
+                }
+            }
+
+            
+
+            
         }
 
-        // Front
-        if (Input.GetKey(KeyCode.W) || gamepad.Front.press)
-        {
-            direction.z = 1f;
-        }
+        
 
-        // Back
-        if (Input.GetKey(KeyCode.S) || gamepad.Back.press)
-        {
-            direction.z = -1f;
-        }
+        // 実行/Apply
 
-        // Up
-        if (Input.GetKey(KeyCode.R) || gamepad.Up.press)
-        {
-            direction.y = 1f;
-        }
-
-        // Down
-        if (Input.GetKey(KeyCode.F) || gamepad.Down.press)
-        {
-            direction.y = -1f;
-        }
         //Translate(direction);
         TranslateInertia(direction);
-
-        float r = 0f;
-        if(Input.GetKey(KeyCode.Q)||gamepad.LRot.press)
-        {
-            r += -1f;
-        }
-        if(Input.GetKey(KeyCode.E)||gamepad.RRot.press)
-        {
-            r += 1f;
-        }
         Rotate(r);
 
-        if (Input.GetKeyDown(KeyCode.Mouse1) || gamepad.RTrigger.trigger)
-            Shot();
+        
+        
 
-        if (Input.GetKey(KeyCode.Space) || gamepad.LTrigger.press)
-        {
-            // ここにアクセル的なやつ
-            // 連動するのはドローンの起動レベルとプロペラの回転量
-            //transform.gameObject.GetComponent<Rigidbody>().useGravity = false;
-            //transform.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            //transform.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 12f,0)*gamepad.LTrigger.value);
-        }
-        else
-        {
-            //transform.gameObject.GetComponent<Rigidbody>().useGravity = true;
-            //Translate(Vector3.down);
-        }
+        // Update
+        pp.Update();
     }
 
     // 平行移動
@@ -107,7 +146,7 @@ public class SPlayerStatus : MonoBehaviour
         vec += transform.right * direction.x;
         vec += transform.up * direction.y;
 
-        transform.GetComponent<Rigidbody>().AddForce(speed * Time.deltaTime * vec * 10f);
+        transform.GetComponent<Rigidbody>().AddForce(speed * Time.deltaTime * vec * 100f);
         transform.GetComponent<Rigidbody>().velocity *= 0.99f;
     }
 
@@ -147,4 +186,37 @@ public class SPlayerStatus : MonoBehaviour
 
     private SGamePadAdjuster gamepad = null;
     [SerializeField] private float rot = 1f;
+
+    public SPropeller pp = null;
+    [SerializeField] bool power_on = false;
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("PlayArea"))
+        {
+            power_on = false;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.CompareTag("PlayArea"))
+        {
+            power_on = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("PlayArea"))
+        {
+            power_on = true;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("PlayArea"))
+        {
+            power_on = true;
+        }
+    }
 }
