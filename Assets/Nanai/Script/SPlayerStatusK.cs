@@ -204,6 +204,10 @@ public class SPlayerStatusK : MonoBehaviour
     [SerializeField]
     bool power_on = false;
 
+    public bool IsPower_On()
+    {
+        return power_on;
+    }
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("PlayArea"))
