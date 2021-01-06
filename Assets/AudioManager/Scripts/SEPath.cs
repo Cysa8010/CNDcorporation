@@ -13,7 +13,6 @@ public static class SEPath{
 	public const string RUN2         = "SE/EnemyB_SE/run2";
 	public const string SYSTEM20     = "SE/Default/system20";
 	public const string SYSTEM23     = "SE/Default/system23";
-	public const string TITLE_ENTER  = "SE/Title/title_Enter";
 
 }
 
