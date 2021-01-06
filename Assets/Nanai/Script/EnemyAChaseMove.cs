@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using KanKikuchi.AudioManager;
 
 public class EnemyAChaseMove : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class EnemyAChaseMove : MonoBehaviour
     float Distance; //Agentと目的地オブジェクトの距離
     public bool IsDiscovery;//Targetを発見したか否かのフラグ
     public bool Fire;
+    bool IsWalk;
+    [SerializeField] float SEspan;
+    float CurrentTime;
 
     //以下主に巡回の際に使用する変数
     [SerializeField] Transform[] PatrolPoints;//巡回地点オブジェクトを格納する配列
@@ -29,6 +33,7 @@ public class EnemyAChaseMove : MonoBehaviour
         AgentDefaultSpeed = Agent.speed;
         IsDiscovery = false;
         Fire = false;
+        IsWalk = true;
         //巡回地点間の移動を継続させるために自動ブレーキを無効化
         Agent.autoBraking = false;
         //目的地を初期化
@@ -38,6 +43,16 @@ public class EnemyAChaseMove : MonoBehaviour
 
     void Update()
     {
+        if (IsWalk)
+        {
+            CurrentTime += Time.deltaTime;
+            if (CurrentTime > SEspan)
+            {
+                //足音SE再生
+                SEManager.Instance.Play(SEPath.RUN2, 0.5f, 0, 1, false, null);
+                CurrentTime = 0;
+            }
+        }
         //2点間の距離を計測
         Distance = Vector3.Distance(Target.transform.position, this.transform.position);
         if (IsDiscovery)
@@ -64,18 +79,9 @@ public class EnemyAChaseMove : MonoBehaviour
                     animator.SetBool("IsRunning", false);
                     animator.SetBool("IsFire", true);
                     Fire = true;
+                    IsWalk = false;
                 }
             }
-            //if (Distance <= SpdChangeRange)
-            //{
-            //    //移動速度変更
-            //    Agent.speed = Spd;
-            //}
-            //else
-            //{
-            //    //移動速度を戻す
-            //    Agent.speed = AgentDefaultSpeed;
-            //}
         }//IsDiscovery True
         else
         {
@@ -104,6 +110,7 @@ public class EnemyAChaseMove : MonoBehaviour
                     animator.SetBool("IsFire", true);
                     Fire = true;
                     IsDiscovery = true;
+                    IsWalk = false;
                 }
             }
 

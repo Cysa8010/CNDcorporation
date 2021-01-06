@@ -6268,6 +6268,7 @@ MonoBehaviour:
   searchAngle: 100
   IsDiscovery: 0
   Fire: 0
+  SEspan: 0
   PatrolPoints:
   - {fileID: 636335214}
   - {fileID: 466328668}
@@ -9860,7 +9861,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1661046484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9935,6 +9936,7 @@ MonoBehaviour:
   searchAngle: 100
   IsDiscovery: 0
   Fire: 0
+  SEspan: 0
   PatrolPoints:
   - {fileID: 636335214}
   - {fileID: 466328668}
@@ -14168,6 +14170,7 @@ MonoBehaviour:
   searchAngle: 100
   IsDiscovery: 0
   Fire: 0
+  SEspan: 1
   PatrolPoints:
   - {fileID: 636335214}
   - {fileID: 466328668}

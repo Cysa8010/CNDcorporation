@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KanKikuchi.AudioManager;
 
 public class EnemyShoot : MonoBehaviour
 {
@@ -59,11 +60,11 @@ public class EnemyShoot : MonoBehaviour
         }
         if (rayHit.collider.transform.GetInstanceID() == Target.transform.GetInstanceID())
         {
+            //射撃SE再生
+            SEManager.Instance.Play(SEPath.ENEMY_SHOOT2,0.5f);
             Debug.Log("Shoot(Enemy)");
             GameObject go = Instantiate(bullet, emitter.transform.position, Quaternion.identity);
             go.GetComponent<Rigidbody>().AddForce(new Vector3(dist.x * 500, dist.y * 50, dist.z * 500));
-            //go.transform.position = Vector3.MoveTowards(go.transform.position,
-            //    new Vector3(Target.transform.position.x, Target.transform.position.y, Target.transform.position.z), 1.5f);
         }
     }
     // 撃つ弾
