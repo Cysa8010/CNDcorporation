@@ -52,13 +52,14 @@ public class EnemyShoot : MonoBehaviour
         Physics.Raycast(ray, out rayHit, FireRange);
         //Debug用Ray表示
         Debug.DrawRay(ray.origin, ray.direction * FireRange, Color.blue, 1, false);
-        if (rayHit.collider == null || rayHit.collider.transform.GetInstanceID() != Target.transform.GetInstanceID())
+        if (rayHit.collider == null || rayHit.collider.tag != Target.tag)
         {
             ChaseMove.SetFireAnimation(false);
             ChaseMove.SetRunningAnimation(true);
             ChaseMove.SetFireFlag(false);
         }
-        if (rayHit.collider.transform.GetInstanceID() == Target.transform.GetInstanceID())
+        //if (rayHit.collider.tag == "Player")
+        if (rayHit.collider.tag == Target.tag)
         {
             //射撃SE再生
             SEManager.Instance.Play(SEPath.ENEMY_SHOOT2,0.5f);
