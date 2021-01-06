@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 public class GameSceneManager : MonoBehaviour
 {
     int i;
+    bool AreaError;
     float CurrentTime;
     [SerializeField] int EnemyNum;
     [SerializeField] GameObject GameClearImage;
     [SerializeField] GameObject GameOverImage;
+    [SerializeField] GameObject PlayAreaErrorImage;
+    [SerializeField] GameObject Player;
 
     int State;//0=ゲーム中, 1=ゲームクリア, 2=ゲームオーバー
     // Start is called before the first frame update
@@ -16,6 +19,7 @@ public class GameSceneManager : MonoBehaviour
     {
         i = 0;
         State = 0;
+        AreaError = false;
     }
 
     // Update is called once per frame
@@ -23,6 +27,21 @@ public class GameSceneManager : MonoBehaviour
     {
         if (State == 0)
         {
+            if (!Player.GetComponent<SPlayerStatusK>().IsPower_On())
+            {
+                AreaError = true;
+            }
+            if (AreaError)
+            {
+                PlayAreaErrorImage.SetActive(true);
+                CurrentTime += Time.deltaTime;
+                if (CurrentTime > 1.5f)
+                {
+                    CurrentTime = 0;
+                    PlayAreaErrorImage.SetActive(false);
+                    AreaError = false;
+                }
+            }
             if (i >= EnemyNum)
             {
                 State = 1;
