@@ -28,6 +28,7 @@ public class SceneChanger : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             GameObject.Find("SceneManager").GetComponent<SSceneManager>().ChangeScene(0);
+            GameObject.Find("SceneManager").GetComponent<KanKikuchi.AudioManager.SEAssistant>().Play();
         }
 
     }
