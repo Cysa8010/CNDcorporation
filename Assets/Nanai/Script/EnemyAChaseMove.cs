@@ -64,6 +64,7 @@ public class EnemyAChaseMove : MonoBehaviour
             }
             else
             {
+                IsWalk = true;
                 Agent.SetDestination(Target.transform.position);
 
                 Vector3 dist = (Target.transform.position - this.transform.position).normalized;
@@ -74,7 +75,8 @@ public class EnemyAChaseMove : MonoBehaviour
                 Physics.Raycast(ray, out rayHit, SensingRange);
                 //Debug用Ray表示
                 Debug.DrawRay(ray.origin, ray.direction * SensingRange, Color.yellow, 1, false);
-                if (rayHit.collider.transform.GetInstanceID() == Target.transform.GetInstanceID())
+                //if (rayHit.collider.tag == "Player")
+                if (rayHit.collider.tag == Target.tag)
                 {
                     animator.SetBool("IsRunning", false);
                     animator.SetBool("IsFire", true);
@@ -103,7 +105,7 @@ public class EnemyAChaseMove : MonoBehaviour
                 //Debug用Ray表示
                 Debug.DrawRay(ray.origin, ray.direction * SensingRange, Color.red, 1, false);
                 //if (rayHit.collider.tag == "Player")
-                if (rayHit.collider.transform.GetInstanceID() == Target.transform.GetInstanceID())
+                if (rayHit.collider.tag == Target.tag)
                 {
                     Debug.Log("Target発見");
                     animator.SetBool("IsRunning", false);
