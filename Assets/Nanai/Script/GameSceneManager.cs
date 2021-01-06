@@ -5,7 +5,11 @@ using UnityEngine.SceneManagement;
 public class GameSceneManager : MonoBehaviour
 {
     int i;
+    float CurrentTime;
     [SerializeField] int EnemyNum;
+    [SerializeField] GameObject GameClearImage;
+    [SerializeField] GameObject GameOverImage;
+
     int State;//0=ゲーム中, 1=ゲームクリア, 2=ゲームオーバー
     // Start is called before the first frame update
     void Start()
@@ -21,20 +25,32 @@ public class GameSceneManager : MonoBehaviour
         {
             if (i >= EnemyNum)
             {
-                State = 2;
+                State = 1;
             }
         }
         //GameClear
         if(State == 1)
         {
-            Debug.Log("GameClear,SceneChange");
-            //SceneManager.LoadScene("Scene_Game", LoadSceneMode.Single);
+            GameClearImage.SetActive(true);
+            CurrentTime += Time.deltaTime;
+            if (CurrentTime > 4.0)//4s経過でシーン遷移
+            {
+                CurrentTime = 0;
+                Debug.Log("GameClear,SceneChange");
+                //SceneManager.LoadScene("Scene_Game", LoadSceneMode.Single);
+            }
         }
         //GameOver
         if (State == 2)
         {
-            Debug.Log("GameOver,SceneChange");
-            //SceneManager.LoadScene("Scene_Game", LoadSceneMode.Single);
+            GameOverImage.SetActive(true);
+            CurrentTime += Time.deltaTime;
+            if (CurrentTime > 4.0)//4s経過でシーン遷移
+            {
+                CurrentTime = 0;
+                Debug.Log("GameOver,SceneChange");
+                //SceneManager.LoadScene("Scene_Game", LoadSceneMode.Single);
+            }
         }
     }
     public void AddCount()

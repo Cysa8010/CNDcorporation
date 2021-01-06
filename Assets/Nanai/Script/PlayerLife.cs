@@ -11,7 +11,7 @@ public class PlayerLife : MonoBehaviour
 
     void Start()
     {
-        GameSceneManagerObject = GameObject.Find("SceneManager");
+        GameSceneManagerObject = GameObject.Find("GameManager");
         ManagerScript = GameSceneManagerObject.GetComponent<GameSceneManager>();
     }
     void Update()

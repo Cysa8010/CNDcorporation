@@ -13,7 +13,7 @@ public class EnemyLife : MonoBehaviour
 
     void Start()
     {
-        GameSceneManagerObject = GameObject.Find("SceneManager");
+        GameSceneManagerObject = GameObject.Find("GameManager");
         ManagerScript = GameSceneManagerObject.GetComponent<GameSceneManager>();
     }
     void Update()
