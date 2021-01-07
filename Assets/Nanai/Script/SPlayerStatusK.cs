@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KanKikuchi.AudioManager;
 
 public class SPlayerStatusK : MonoBehaviour
 {
@@ -54,11 +55,19 @@ public class SPlayerStatusK : MonoBehaviour
                 //transform.gameObject.GetComponent<Rigidbody>().useGravity = false;
                 //transform.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 //transform.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 12f,0)*gamepad.LTrigger.value);
+                if (!FlySE_On)
+                {
+                    //飛行SE再生
+                    SEManager.Instance.Play(SEPath.DRONE_FLY, 0.3f, 0, 1, true, null);
+                    FlySE_On = true;
+                }
             }
             else
             {
                 isTrigger = false;
-
+                //飛行SE停止
+                SEManager.Instance.Stop(SEPath.DRONE_FLY);
+                FlySE_On = false;
                 //transform.gameObject.GetComponent<Rigidbody>().useGravity = true;
                 //Translate(Vector3.down);
             }
@@ -170,6 +179,8 @@ public class SPlayerStatusK : MonoBehaviour
     // 弾発射
     void Shot()
     {
+        //射撃SE再生
+        SEManager.Instance.Play(SEPath.DRONE_SHOOT, 0.3f, 0, 1, false, null);
         GameObject go = Instantiate(bullet, emitter.transform.position, Quaternion.identity);
         go.GetComponent<Rigidbody>().AddForce(transform.forward * 500);
     }
@@ -203,6 +214,7 @@ public class SPlayerStatusK : MonoBehaviour
     public SPropeller pp = null;
     [SerializeField]
     bool power_on = false;
+    bool FlySE_On = false;
 
     public bool IsPower_On()
     {
@@ -225,6 +237,11 @@ public class SPlayerStatusK : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            //激突SE再生
+            SEManager.Instance.Play(SEPath.DRONE_CLASH2, 0.3f, 0, 1, false, null);
+        }
         if (collision.gameObject.CompareTag("PlayArea"))
         {
             power_on = true;
