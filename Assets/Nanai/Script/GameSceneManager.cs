@@ -80,4 +80,10 @@ public class GameSceneManager : MonoBehaviour
     {
         State = 2;
     }
+
+    public int GetEnemyCount()
+    {
+        return i;
+    }
+
 }
