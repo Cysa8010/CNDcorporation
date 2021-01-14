@@ -12,6 +12,7 @@ public class GameSceneManager : MonoBehaviour
     [SerializeField] GameObject GameOverImage;
     [SerializeField] GameObject PlayAreaErrorImage;
     [SerializeField] GameObject Player;
+    [SerializeField] private SSceneManager scene = null;
 
     int State;//0=ゲーム中, 1=ゲームクリア, 2=ゲームオーバー
     // Start is called before the first frame update
@@ -57,6 +58,7 @@ public class GameSceneManager : MonoBehaviour
                 CurrentTime = 0;
                 Debug.Log("GameClear,SceneChange");
                 //SceneManager.LoadScene("Scene_Game", LoadSceneMode.Single);
+                scene.ChangeScene(0);
             }
         }
         //GameOver
@@ -69,6 +71,7 @@ public class GameSceneManager : MonoBehaviour
                 CurrentTime = 0;
                 Debug.Log("GameOver,SceneChange");
                 //SceneManager.LoadScene("Scene_Game", LoadSceneMode.Single);
+                scene.ChangeScene(0);
             }
         }
     }
