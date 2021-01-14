@@ -98,26 +98,32 @@ public class SPlayerStatusK : MonoBehaviour
                 }
 
                 // Up
-                if (Input.GetKey(KeyCode.R) || gamepad.Up.press)
+                if (Input.GetKey(KeyCode.Space) || gamepad.Up.press)
                 {
                     direction.y = 0.3f;
                 }
 
                 // Down
-                if (Input.GetKey(KeyCode.F) || gamepad.Down.press)
+                if (/*Input.GetKey(KeyCode.F) ||*/ gamepad.Down.press)
                 {
                     direction.y = -0.3f;
                 }
 
+                
+                float mouse_move_x = Input.GetAxis("Mouse X") * mouseSensitivity;
+                float mouse_move_y = Input.GetAxis("Mouse Y") * mouseSensitivity;
+
                 // Turn
-                if (Input.GetKey(KeyCode.Q) || gamepad.LRot.press)
+                if ((mouse_move_x < 0f) || gamepad.LRot.press)
                 {
                     r += -2f;
                 }
-                if (Input.GetKey(KeyCode.E) || gamepad.RRot.press)
+                if ((mouse_move_x > 0f) || gamepad.RRot.press)
                 {
                     r += 2f;
                 }
+
+                r += 2f * mouse_move_x * 50;
             }
 
 
@@ -215,6 +221,8 @@ public class SPlayerStatusK : MonoBehaviour
     [SerializeField]
     bool power_on = false;
     bool FlySE_On = false;
+
+    [SerializeField] float mouseSensitivity = 0.1f; // いわゆるマウス感度
 
     public bool IsPower_On()
     {

@@ -12925,7 +12925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d9065c7e6244dddaffda63eb37d64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioClip: {fileID: 8300000, guid: 6db0e37abb24849a69b697b62d8776e4, type: 3}
+  _audioClip: {fileID: 8300000, guid: cdaa503ea7e21204bb1ccbe6b572bb0f, type: 3}
   _isAutoPlay: 1
   _volumeRate: 1
   _delay: 0
@@ -12960,13 +12960,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName:
   - Result
-  canvas: {fileID: 0}
-  slider: {fileID: 0}
+  canvas: {fileID: 1775634930}
+  slider: {fileID: 332328813}
   fade:
     isFadeIn: 1
     isFadeOut: 1
     limitTime: 1
-    image: {fileID: 0}
+    image: {fileID: 1426085011}
 --- !u!4 &1296855357
 Transform:
   m_ObjectHideFlags: 0
@@ -40871,6 +40871,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player_v2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902221867375187363, guid: 04484a426fc807a41bb9f27746ec64ae,
+        type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04484a426fc807a41bb9f27746ec64ae, type: 3}
