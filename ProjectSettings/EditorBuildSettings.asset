@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Game/Scene/GameA.unity
     guid: 8c10203c072292b4883327f91cf3a8e1
   - enabled: 1
-    path: Assets/Game/Scene/GameB.unity
+    path: Assets/Game/Scene/_GameB.unity
     guid: 62b78dab09979cf47ad0ecde25afdd3d
   - enabled: 1
     path: Assets/Game/Scene/Result.unity
