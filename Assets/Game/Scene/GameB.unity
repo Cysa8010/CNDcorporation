@@ -12960,13 +12960,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName:
   - Result
-  canvas: {fileID: 0}
-  slider: {fileID: 0}
+  canvas: {fileID: 1775634930}
+  slider: {fileID: 332328813}
   fade:
     isFadeIn: 1
     isFadeOut: 1
     limitTime: 1
-    image: {fileID: 0}
+    image: {fileID: 1426085011}
 --- !u!4 &1296855357
 Transform:
   m_ObjectHideFlags: 0
