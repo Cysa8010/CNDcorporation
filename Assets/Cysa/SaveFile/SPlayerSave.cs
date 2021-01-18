@@ -73,4 +73,6 @@ public class SPlayerSave : MonoBehaviour
     [SerializeField] private SSaveData playerData = null;
     [SerializeField] private SSaveData writeData = null;
 
+    public SSaveData data { get { return writeData; } set { writeData = value; } }
+
 }
