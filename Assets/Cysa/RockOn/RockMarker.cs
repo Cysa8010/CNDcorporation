@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class RockMarker : MonoBehaviour
 {
 	public GameObject lockOnSystem;
+	[SerializeField] private Image image = null;
 	// Use this for initialization
 	void Start()
 	{
@@ -24,6 +25,7 @@ public class RockMarker : MonoBehaviour
 		if (!l.getTarget())
 		{
 			Debug.Log("Erorr LockOnSystem.Target()");
+			image.color = new Color(0f, 0f, 0f, 0f);//透明(非表示)
 			return;
 		}
 		if (!Camera.main)
@@ -43,18 +45,18 @@ public class RockMarker : MonoBehaviour
 			if (l.getIsLockOn())
 			{
 				//ロックオン完了
-				this.gameObject.GetComponent<Image>().color = new Color(0f, 1f, 0f, 1f);//緑
+				image.color = new Color(0f, 1f, 0f, 1f);//緑
 			}
 			else
 			{
 				//ロックオン途中
-				this.gameObject.GetComponent<Image>().color = new Color(1f, 0f, 0f, 1f);//赤
+				image.color = new Color(1f, 0f, 0f, 1f);//赤
 			}
 		}
 		else
 		{
 			//ロックオンサークル外
-			this.gameObject.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0f);//透明(非表示)
+			image.color = new Color(0f, 0f, 0f, 0f);//透明(非表示)
 		}
 	}
 }

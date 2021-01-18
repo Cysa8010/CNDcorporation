@@ -328,7 +328,7 @@ MonoBehaviour:
   filePath: /data/savedata.json
   playerData:
     recovery: 50
-    limitEnergy: 500
+    limitEnergy: 5000
     move: 1
     speed: 1
     durability: 10
@@ -339,7 +339,7 @@ MonoBehaviour:
     money: 10000
   writeData:
     recovery: 50
-    limitEnergy: 500
+    limitEnergy: 5000
     move: 1
     speed: 1
     durability: 10
