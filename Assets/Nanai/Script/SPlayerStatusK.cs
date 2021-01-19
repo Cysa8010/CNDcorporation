@@ -7,11 +7,19 @@ using KanKikuchi.AudioManager;
 
 public class SPlayerStatusK : MonoBehaviour
 {
+
+    GameObject BulletEnergyObject;
+    SBulletEnergy BulletEnergyScript;
+
     // Start is called before the first frame update
     void Start()
     {
         gamepad = transform.gameObject.AddComponent<SGamePadAdjuster>();
         //emitter = transform.Find(@"Body\Weapon\Emitter").gameObject;
+
+        BulletEnergyObject = GameObject.Find("gage");
+        BulletEnergyScript = BulletEnergyObject.GetComponent<SBulletEnergy>();  
+
         pp = new SPropeller();
         pp.Initialize(transform.Find("Body/PropellerFL"), transform.Find("Body/PropellerFR"),
             transform.Find("Body/PropellerBL"), transform.Find("Body/PropellerBR"));
@@ -36,11 +44,14 @@ public class SPlayerStatusK : MonoBehaviour
 
         if (power_on)
         {
-            // Shot
-            if (Input.GetKeyDown(KeyCode.Mouse1) || gamepad.RTrigger.trigger)
+            if (BulletEnergyScript.energy >= BulletEnergyScript.consume)
             {
-                isShot = true;
-                Shot();
+                // Shot
+                if (Input.GetKeyDown(KeyCode.Mouse1) || gamepad.RTrigger.trigger)
+                {
+                    isShot = true;
+                    Shot();
+                }
             }
 
             // PowerAccele
@@ -183,6 +194,7 @@ public class SPlayerStatusK : MonoBehaviour
         SEManager.Instance.Play(SEPath.DRONE_SHOOT, 0.3f, 0, 1, false, null);
         GameObject go = Instantiate(bullet, emitter.transform.position, Quaternion.identity);
         go.GetComponent<Rigidbody>().AddForce(transform.forward * 500);
+        BulletEnergyObject.GetComponent<SBulletEnergy>().ConsumeEnergy();
     }
 
 
