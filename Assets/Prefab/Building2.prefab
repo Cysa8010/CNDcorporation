@@ -132,6 +132,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 480721230871237851}
     m_Modifications:
+    - target: {fileID: 715703982521969441, guid: a1794b7132213aa4bab85fea69ff3259,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 715703982521969441, guid: a1794b7132213aa4bab85fea69ff3259,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 945599875952478577, guid: a1794b7132213aa4bab85fea69ff3259,
         type: 3}
       propertyPath: m_LocalPosition.x
