@@ -207,6 +207,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 35
       objectReference: {fileID: 0}
+    - target: {fileID: 4349899473521551519, guid: 412b269396de38347be4d294a3b8505e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349899473521551519, guid: 412b269396de38347be4d294a3b8505e,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 412b269396de38347be4d294a3b8505e, type: 3}
 --- !u!4 &4797314702180541056 stripped
