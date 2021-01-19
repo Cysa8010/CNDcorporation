@@ -27,7 +27,7 @@ public class SPlayerStatusK : MonoBehaviour
     {
         // 今は簡易的に操作を直書き
         // 今後どうにかする
-
+        Debug.Log(gameObject.transform.position);
         // キー処理
         Vector3 direction = Vector3.zero;
         float r = 0f;
