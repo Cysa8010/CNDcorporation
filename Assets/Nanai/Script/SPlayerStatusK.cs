@@ -17,7 +17,7 @@ public class SPlayerStatusK : MonoBehaviour
         gamepad = transform.gameObject.AddComponent<SGamePadAdjuster>();
         //emitter = transform.Find(@"Body\Weapon\Emitter").gameObject;
 
-        BulletEnergyObject = GameObject.Find("gage");
+        BulletEnergyObject = GameObject.Find("Gage");
         BulletEnergyScript = BulletEnergyObject.GetComponent<SBulletEnergy>();  
 
         pp = new SPropeller();
