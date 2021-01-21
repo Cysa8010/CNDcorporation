@@ -66,8 +66,13 @@ public class GameSceneManager : MonoBehaviour
                 CurrentTime = 0;
                 Debug.Log("GameClear,SceneChange");
                 //SceneManager.LoadScene("Scene_Game", LoadSceneMode.Single);
-                coin = 100;
+                coin = 3000;//報酬初期値
+                float a = timeLimit.GetTotalTime();//(多分)クリア時の残り時間を取得
+                float b = a * 10;
+                coin += (int)b;
+
                 timeLimit.GetClearTime(ref minu, ref sec, ref msec);
+
                 SceneManager.sceneLoaded += ResultSceneLoaded;
                 scene.ChangeScene(0);
             }

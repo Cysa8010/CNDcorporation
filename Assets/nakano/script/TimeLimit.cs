@@ -72,4 +72,12 @@ public class TimeLimit : MonoBehaviour
         msec = (int)(tmp * 100 % 100);
 
     }
+    public float GetTotalTime()
+    {
+        return totalTime;
+    }
+    public float GetLimitTime()
+    {
+        return limitTime;
+    }
 }

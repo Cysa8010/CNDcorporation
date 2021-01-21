@@ -21,7 +21,8 @@ public class S_TimeScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TimeText.text = string.Format("{0:00}\'{0:00}\"{0:00}", minu, sec, msec);
+        //TimeText.text = string.Format("{0:00}\'{0:00}\"{0:00}", minu, sec, msec);
+        TimeText.text = "0" + string.Format("{0}\'{1}\"{2}", minu, sec, msec);
     }
 
     public void SetTime(int minu,int sec,int msec)

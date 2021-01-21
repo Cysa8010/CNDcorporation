@@ -1418,7 +1418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b1d2946e56d9a45a73209d0766100a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Life: 5
+  Life: 8
   Damage: 1
   particleObject: {fileID: 2178107326628307712, guid: 7879e43fa29a2e34daeb27034b4d759f,
     type: 3}
