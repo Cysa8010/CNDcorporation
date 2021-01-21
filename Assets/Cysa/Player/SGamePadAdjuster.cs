@@ -58,6 +58,34 @@ public class SGamePadAdjuster : MonoBehaviour
     void Update()
     {
         float value;
+
+        // ゲームパッドの検出
+        // 接続されているコントローラの名前を調べる
+        var controllerNames = Input.GetJoystickNames();
+
+        // 一台もコントローラが接続されていなければエラー
+        //if (controllerNames[0] == "")
+        if (controllerNames == null)
+        {
+            value = 0f;
+            Left.Update(value, value < -0.8f, -0.8f <= value);
+            Right.Update(value, 0.8f < value, value <= 0.8f);
+
+            Front.Update(value, 0.8f < value, value <= 0.8f);
+            Back.Update(value, value < -0.8f, -0.8f <= value);
+
+            Up.Update(value, value < -0.8f, -0.8f <= value);
+            Down.Update(value, 0.8f < value, value <= 0.8f);
+
+            LRot.Update(value, value < -0.8f, -0.8f <= value);
+            RRot.Update(value, 0.8f < value, value <= 0.8f);
+
+            LTrigger.Update(value, 0 < value, value == 0);
+            RTrigger.Update(value, 0 < value, value == 0);
+            return;
+        }
+
+
         value = Input.GetAxis("Horizontal");
         Left.Update(value, value < -0.8f, -0.8f <= value);
         Right.Update(value, 0.8f < value, value <= 0.8f);

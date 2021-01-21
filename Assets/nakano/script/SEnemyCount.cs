@@ -17,6 +17,11 @@ public class SEnemyCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(defobj==null)
+		{
+            text.text = "ターゲット名 : Unknown\n残敵数: 0 / 0";
+            return;
+        }
         text.text = defobj.GetComponent<GameSceneManager>().GetEnemyCount() + " / 3";
 
     }
