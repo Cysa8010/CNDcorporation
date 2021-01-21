@@ -32,7 +32,7 @@ public class SSceneManager : MonoBehaviour
     */
     public void ChangeScene(int index)
     {
-        fade.SetFadeOut(this.LoadScene, 0);
+        fade.SetFadeOut(this.LoadScene, index);
     }
 
     // ** member **
