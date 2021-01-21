@@ -35,7 +35,7 @@ public class SPlayerStatusKNC : MonoBehaviour
             if (bulletEnergy.energy >= bulletEnergy.consume)
             {
                 // Shot
-                if (Input.GetKeyDown(KeyCode.Mouse1) || gamepad.RTrigger.trigger)
+                if (Input.GetKeyDown(KeyCode.Mouse0) || gamepad.RTrigger.trigger)
                 {
                     isShot = true;
                     Shot();
@@ -43,7 +43,7 @@ public class SPlayerStatusKNC : MonoBehaviour
             }
 
             // PowerAccele
-            if (Input.anyKey || gamepad.Left.press || gamepad.Right.press || gamepad.Up.press || gamepad.Down.press || gamepad.Front.press || gamepad.Back.press || gamepad.LRot.press || gamepad.RRot.press)
+            if (Input.GetAxis("Mouse X")!=0f || Input.GetAxis("Mouse Y")!=0f || Input.anyKey || gamepad.Left.press || gamepad.Right.press || gamepad.Up.press || gamepad.Down.press || gamepad.Front.press || gamepad.Back.press || gamepad.LRot.press || gamepad.RRot.press)
             {
                 isTrigger = true;   //ボタンを押した状態
                 //pp.Accele(gamepad.LTrigger.value);
@@ -99,13 +99,13 @@ public class SPlayerStatusKNC : MonoBehaviour
                 // Up
                 if (Input.GetKey(KeyCode.Space) || gamepad.Up.press)
                 {
-                    direction.y = 0.3f;
+                    RiseandFall(gamepad.Up.value != 0f ? -gamepad.Up.value : 1);
                 }
 
                 // Down
                 if (/*Input.GetKey(KeyCode.F) ||*/ gamepad.Down.press)
                 {
-                    direction.y = -0.3f;
+                    RiseandFall(gamepad.Down.value != 0f ? -gamepad.Down.value : -1);
                 }
 
 
@@ -172,6 +172,16 @@ public class SPlayerStatusKNC : MonoBehaviour
         transform.GetComponent<Rigidbody>().velocity *= 0.99f;
     }
 
+    void RiseandFall(float direction)
+    {
+        // 各軸移動量の算出
+        Vector3 vec = Vector3.zero;
+        vec += transform.up * direction;
+
+        transform.GetComponent<Rigidbody>().AddForce(rise * Time.deltaTime * vec * 100f);
+        transform.GetComponent<Rigidbody>().velocity *= 0.99f;
+    }
+
     // 旋回
     void Rotate(float lr)
     {
@@ -196,6 +206,8 @@ public class SPlayerStatusKNC : MonoBehaviour
     /* 速度(1m/s) = accele */
     [SerializeField]
     private float speed = 1f;
+    [SerializeField]
+    private float rise = 1f;
     /* 移動量 */
     [SerializeField]
     private Vector3 move = Vector3.zero;
