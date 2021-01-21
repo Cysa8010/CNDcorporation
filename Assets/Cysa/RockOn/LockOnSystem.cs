@@ -58,6 +58,8 @@ public class LockOnSystem : MonoBehaviour
 			trans.position += new Vector3(0, 0.5f, 0);
 
 			weapon.transform.LookAt(trans);
+
+			trans.position -= new Vector3(0, 0.5f, 0);
 		}
 
 	}

@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 444266932}
   - component: {fileID: 444266931}
   - component: {fileID: 444266934}
+  - component: {fileID: 444266935}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -423,7 +424,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 444266932}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 444266935}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &444266932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,6 +491,22 @@ MonoBehaviour:
   - {r: 1, g: 1, b: 1, a: 0}
   alpha: 0
   alpha_Sin: 0
+--- !u!114 &444266935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444266929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac1f0dd172fcb34e8c99643d74b7b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: {fileID: 1242463308}
+  button: {fileID: 444266931}
+  eventSystem: {fileID: 787962334}
+  sceneIndex: 0
 --- !u!1 &509379235
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,7 +797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 444266929}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &787962335
@@ -976,7 +1004,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1242463309}
   - component: {fileID: 1242463308}
-  - component: {fileID: 1242463310}
   - component: {fileID: 1242463311}
   - component: {fileID: 1242463312}
   m_Layer: 0
@@ -1021,18 +1048,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1242463310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242463307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 811bdfdf9ecb7f2428e3d8852aa44dae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1242463311
 MonoBehaviour:
   m_ObjectHideFlags: 0
