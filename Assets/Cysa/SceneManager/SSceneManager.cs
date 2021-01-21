@@ -54,6 +54,11 @@ public class SSceneManager : MonoBehaviour
     */
     private void Start()
     {
+        //カーソル非表示
+        Cursor.visible = false;
+        //中央にロック
+        Cursor.lockState = CursorLockMode.Locked;
+
         fade.Start();
     }
 
