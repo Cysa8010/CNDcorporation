@@ -10486,6 +10486,7 @@ MonoBehaviour:
   GameOverImage: {fileID: 242886096}
   PlayAreaErrorImage: {fileID: 1996844601}
   Player: {fileID: 8506136326504554172}
+  scene: {fileID: 0}
 --- !u!1 &1700109880
 GameObject:
   m_ObjectHideFlags: 0
@@ -12303,6 +12304,75 @@ Transform:
   m_Father: {fileID: 873613415682952128}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1206952742805108469
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1206952741488668483, guid: 0a1afa5649ad0db4eb7678b2105fe56d,
+        type: 3}
+      propertyPath: m_Name
+      value: MoneyManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206952741488668492, guid: 0a1afa5649ad0db4eb7678b2105fe56d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206952741488668492, guid: 0a1afa5649ad0db4eb7678b2105fe56d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206952741488668492, guid: 0a1afa5649ad0db4eb7678b2105fe56d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206952741488668492, guid: 0a1afa5649ad0db4eb7678b2105fe56d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206952741488668492, guid: 0a1afa5649ad0db4eb7678b2105fe56d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206952741488668492, guid: 0a1afa5649ad0db4eb7678b2105fe56d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206952741488668492, guid: 0a1afa5649ad0db4eb7678b2105fe56d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206952741488668492, guid: 0a1afa5649ad0db4eb7678b2105fe56d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206952741488668492, guid: 0a1afa5649ad0db4eb7678b2105fe56d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206952741488668492, guid: 0a1afa5649ad0db4eb7678b2105fe56d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206952741488668492, guid: 0a1afa5649ad0db4eb7678b2105fe56d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0a1afa5649ad0db4eb7678b2105fe56d, type: 3}
 --- !u!4 &1287321044174957197
 Transform:
   m_ObjectHideFlags: 0
