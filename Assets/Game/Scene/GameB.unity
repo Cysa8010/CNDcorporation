@@ -7355,7 +7355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b1d2946e56d9a45a73209d0766100a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Life: 3
+  Life: 5
   Damage: 1
   particleObject: {fileID: 2178107326628307712, guid: 7879e43fa29a2e34daeb27034b4d759f,
     type: 3}
@@ -12328,7 +12328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b1d2946e56d9a45a73209d0766100a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Life: 3
+  Life: 5
   Damage: 1
   particleObject: {fileID: 2178107326628307712, guid: 7879e43fa29a2e34daeb27034b4d759f,
     type: 3}
@@ -38422,6 +38422,16 @@ PrefabInstance:
       propertyPath: bulletEnergy
       value: 
       objectReference: {fileID: 5930094573309563942}
+    - target: {fileID: 6888110457553444425, guid: 9b07b24e39b509546ba9b768c16f0023,
+        type: 3}
+      propertyPath: speed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888110457553444425, guid: 9b07b24e39b509546ba9b768c16f0023,
+        type: 3}
+      propertyPath: rise
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6888110457553444428, guid: 9b07b24e39b509546ba9b768c16f0023,
         type: 3}
       propertyPath: m_Name
@@ -39556,6 +39566,26 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1201141951368123440}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &5709486577608919682 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 6888110457553444418, guid: 9b07b24e39b509546ba9b768c16f0023,
+    type: 3}
+  m_PrefabInstance: {fileID: 1201141951368123440}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5709486577608919684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5709486577608919676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e78a9b840d7a9ef49b58950b4bdeb989, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravity: {x: 0, y: -2.4525, z: 0}
+  rigidbody: {fileID: 5709486577608919682}
 --- !u!1 &5741328102957232041
 GameObject:
   m_ObjectHideFlags: 0
@@ -40599,7 +40629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b1d2946e56d9a45a73209d0766100a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Life: 3
+  Life: 5
   Damage: 1
   particleObject: {fileID: 2178107326628307712, guid: 7879e43fa29a2e34daeb27034b4d759f,
     type: 3}
