@@ -6,17 +6,22 @@ using UnityEngine.UI;
 public class S_CoinScore : MonoBehaviour
 {
     // UI Text指定用
-    public Text CoinText;
+    [SerializeField] private Text CoinText;
     // 獲得コイン受け皿
-    private int gottencoin;
+    private int gottencoin = 0;
  
     // Use this for initialization
     void Start () {
-        gottencoin = 0;
+        //gottencoin = 0;
     }
      
     // Update is called once per frame
     void Update () {
-        CoinText.text = string.Format("{0:0000} coin", gottencoin);
+        CoinText.text = string.Format("￥ {0}", gottencoin);
     }
+
+    public void SetCoin(int coin)
+	{
+        gottencoin = coin;
+	}
 }

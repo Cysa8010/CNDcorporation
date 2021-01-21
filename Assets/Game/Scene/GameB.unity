@@ -7355,7 +7355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b1d2946e56d9a45a73209d0766100a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Life: 5
+  Life: 3
   Damage: 1
   particleObject: {fileID: 2178107326628307712, guid: 7879e43fa29a2e34daeb27034b4d759f,
     type: 3}
@@ -12328,7 +12328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b1d2946e56d9a45a73209d0766100a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Life: 5
+  Life: 3
   Damage: 1
   particleObject: {fileID: 2178107326628307712, guid: 7879e43fa29a2e34daeb27034b4d759f,
     type: 3}
@@ -15389,6 +15389,7 @@ MonoBehaviour:
   PlayAreaErrorImage: {fileID: 1996844601}
   Player: {fileID: 5709486577608919676}
   scene: {fileID: 1296855356}
+  timeLimit: {fileID: 5930094571978673674}
 --- !u!4 &1693011948 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 174718773702858884, guid: 041f1f442fa0095468b7dd17b33da477,
@@ -39818,6 +39819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1637c89e7b0624c8f714214cb146db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  limitTime: 0
   totalTime: 0
   minute: 1
   seconds: 0
@@ -40629,7 +40631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b1d2946e56d9a45a73209d0766100a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Life: 5
+  Life: 3
   Damage: 1
   particleObject: {fileID: 2178107326628307712, guid: 7879e43fa29a2e34daeb27034b4d759f,
     type: 3}

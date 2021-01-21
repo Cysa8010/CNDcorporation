@@ -14,6 +14,12 @@ public class GameSceneManager : MonoBehaviour
     [SerializeField] GameObject PlayAreaErrorImage;
     [SerializeField] GameObject Player;
     [SerializeField] private SSceneManager scene = null;
+    [SerializeField] private TimeLimit timeLimit = null;
+
+    int coin;
+    int minu;
+    int sec;
+    int msec;
 
     int State;//0=ゲーム中, 1=ゲームクリア, 2=ゲームオーバー
     // Start is called before the first frame update
@@ -60,6 +66,9 @@ public class GameSceneManager : MonoBehaviour
                 CurrentTime = 0;
                 Debug.Log("GameClear,SceneChange");
                 //SceneManager.LoadScene("Scene_Game", LoadSceneMode.Single);
+                coin = 100;
+                timeLimit.GetClearTime(ref minu, ref sec, ref msec);
+                SceneManager.sceneLoaded += ResultSceneLoaded;
                 scene.ChangeScene(0);
             }
         }
@@ -73,6 +82,9 @@ public class GameSceneManager : MonoBehaviour
                 CurrentTime = 0;
                 Debug.Log("GameOver,SceneChange");
                 //SceneManager.LoadScene("Scene_Game", LoadSceneMode.Single);
+                coin = 0;
+                timeLimit.GetClearTime(ref minu, ref sec, ref msec);
+                SceneManager.sceneLoaded += ResultSceneLoaded;
                 scene.ChangeScene(0);
             }
         }
@@ -97,6 +109,12 @@ public class GameSceneManager : MonoBehaviour
         return MaxEnemyNum;
 	}
 
-
+    private void ResultSceneLoaded(Scene next, LoadSceneMode mode)
+    {
+        // シーン切り替え時に呼ばれる
+        var gameManager = GameObject.Find("ResultManager").GetComponent<ResultManager>();
+        gameManager.SetResultData(coin, minu, sec, msec);
+        SceneManager.sceneLoaded -= ResultSceneLoaded;
+    }
 
 }
