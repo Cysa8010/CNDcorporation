@@ -14,6 +14,9 @@ public static class SEPath{
 	public const string ENEMY_SHOOT2  = "SE/EnemyB_SE/enemy_Shoot2";
 	public const string EQUIP1        = "SE/Menu/equip1";
 	public const string JINGLE10      = "SE/Default/Jingle/jingle10";
+	public const string KEY_CANCEL    = "SE/Menu/key_Cancel";
+	public const string KEY_CROSS     = "SE/Menu/key_Cross";
+	public const string KEY_ENTER     = "SE/Menu/key_Enter";
 	public const string RUN1          = "SE/EnemyB_SE/run1";
 	public const string RUN2          = "SE/EnemyB_SE/run2";
 	public const string SYSTEM20      = "SE/Default/system20";
