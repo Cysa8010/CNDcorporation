@@ -106,7 +106,7 @@ public class GameSceneManager : MonoBehaviour
 
     public int GetEnemyCount()
     {
-        return EnemyNum;
+        return EnemyNum - i;
     }
 
     public int GetMaxEnemy()
