@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class TimeLimit : MonoBehaviour
 {
+    // 制限時間の上限値
+    [SerializeField] private float limitTime;
+
     //トータルの制限時間
     [SerializeField]
     private float totalTime;
@@ -26,7 +29,7 @@ public class TimeLimit : MonoBehaviour
 
     private void Start()
     {
-        totalTime = minute * 60 + seconds;
+        limitTime = totalTime = minute * 60 + seconds;
         //timerText = GetComponentInChildren<Text>();
     }
 
@@ -58,5 +61,15 @@ public class TimeLimit : MonoBehaviour
         {
             Debug.Log("制限時間終了");
         }
+    }
+
+    public void GetClearTime(ref int minu,ref int sec,ref int msec)
+	{
+        float tmp = limitTime - totalTime;
+
+        minu = (int)tmp / 60;
+        sec = (int)(tmp % 60); //57秒の時　57 - 0 * 60 = 57 - 0 = 57
+        msec = (int)(tmp * 100 % 100);
+
     }
 }
