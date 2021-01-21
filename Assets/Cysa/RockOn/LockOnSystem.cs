@@ -6,16 +6,18 @@ using System.Linq;
  
 public class LockOnSystem : MonoBehaviour
 {
-	public GameObject enemyUnit;
-	//public GameObject Weapon;
+	//public GameObject enemyUnit;
+	[SerializeField] private string searchTag = "Enemy";
 	public int lockOnTime = 3;
-	[SerializeField]private GameObject target;
 	private int elapsedTime = 0;
 	private const int MAX_LOCK_ON_TIME = 3600;
 	private bool isLockOn = false;
 	public float lockOnCircle = 150;
 
 	[SerializeField] private GameObject player = null;
+	[SerializeField] private GameObject weapon;
+	private GameObject target;
+
 
 	void Start()
 	{
@@ -25,7 +27,6 @@ public class LockOnSystem : MonoBehaviour
 
 	void Update()
 	{
-
 		//lockOnProc();
 
 		////ロックオン完了までの時間を越えた場合ロックオン！！
@@ -53,45 +54,15 @@ public class LockOnSystem : MonoBehaviour
 			isLockOn = true;
 			elapsedTime = 1;
 		}
-	}
 
-
-	/*ロックオン処理*/
-	private void lockOnProc()
-	{
-
-		//敵がゲーム画面内にいる場合
-		if (enemyUnit.GetComponent<UnitManagement>().getIsRendered())
+		if (target != null)
 		{
-
-			//敵との間に障害物無い場合
-			if (Physics.Linecast(this.transform.position, enemyUnit.transform.position, LayerMask.GetMask("Field")) == false)
-			{
-				Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, enemyUnit.transform.position);
-				//Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(null, enemyUnit.transform.position);
-				screenPoint.x = screenPoint.x - (Screen.width / 2);
-				screenPoint.y = screenPoint.y - (Screen.height / 2);
-
-				//ロックオンサークル内の場合
-				if (screenPoint.magnitude <= lockOnCircle)
-				{
-
-					if (elapsedTime < MAX_LOCK_ON_TIME)
-					{
-						elapsedTime++;
-					}
-					target = enemyUnit;
-					return;     //処理終了
-
-				}
-			}
-
+			weapon.transform.LookAt(target.transform);
 		}
-		//敵がロックオンできない状態の場合
-		elapsedTime = 0;
-		return;
 	}
 
+
+	
 	/* キメラ追記 */
 	protected GameObject GetTargetClosestPlayer()
 	{
@@ -122,7 +93,6 @@ public class LockOnSystem : MonoBehaviour
 					target = hit.transform.gameObject;
 				}
 			}
-
 			return target;
 		}
 		else
@@ -138,7 +108,7 @@ public class LockOnSystem : MonoBehaviour
 				Vector3 screenPoint = Camera.main.WorldToViewportPoint(h.transform.position);
 				return screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
 			})
-			.Where(h => h.tag == "Enemy")
+			.Where(h => h.tag == searchTag)
 			.ToList();
 	}
 

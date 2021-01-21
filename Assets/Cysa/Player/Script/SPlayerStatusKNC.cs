@@ -1,24 +1,15 @@
-﻿//kanda 修正　34:bool追加 46:条件追加 48:bool真  49:※アウト  50:49に代わる関数呼び出し  60:bool偽
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using KanKikuchi.AudioManager;
+using KanKikuchi.AudioManager;      //!< for AudioManager
 
-public class SPlayerStatusK : MonoBehaviour
+public class SPlayerStatusKNC : MonoBehaviour
 {
-
-    GameObject BulletEnergyObject;
-    SBulletEnergy BulletEnergyScript;
 
     // Start is called before the first frame update
     void Start()
     {
         gamepad = transform.gameObject.AddComponent<SGamePadAdjuster>();
-        //emitter = transform.Find(@"Body\Weapon\Emitter").gameObject;
-
-        BulletEnergyObject = GameObject.Find("Gage");
-        BulletEnergyScript = BulletEnergyObject.GetComponent<SBulletEnergy>();  
 
         pp = new SPropeller();
         pp.Initialize(transform.Find("Body/PropellerFL"), transform.Find("Body/PropellerFR"),
@@ -33,9 +24,6 @@ public class SPlayerStatusK : MonoBehaviour
      */
     void Update()
     {
-        // 今は簡易的に操作を直書き
-        // 今後どうにかする
-        Debug.Log(gameObject.transform.position);
         // キー処理
         Vector3 direction = Vector3.zero;
         float r = 0f;
@@ -44,7 +32,7 @@ public class SPlayerStatusK : MonoBehaviour
 
         if (power_on)
         {
-            if (BulletEnergyScript.energy >= BulletEnergyScript.consume)
+            if (bulletEnergy.energy >= bulletEnergy.consume)
             {
                 // Shot
                 if (Input.GetKeyDown(KeyCode.Mouse1) || gamepad.RTrigger.trigger)
@@ -55,7 +43,7 @@ public class SPlayerStatusK : MonoBehaviour
             }
 
             // PowerAccele
-            if (Input.GetKey(KeyCode.Space) || gamepad.Left.press || gamepad.Right.press || gamepad.Up.press || gamepad.Down.press || gamepad.Front.press || gamepad.Back.press || gamepad.LRot.press || gamepad.RRot.press)
+            if (Input.anyKey || gamepad.Left.press || gamepad.Right.press || gamepad.Up.press || gamepad.Down.press || gamepad.Front.press || gamepad.Back.press || gamepad.LRot.press || gamepad.RRot.press)
             {
                 isTrigger = true;   //ボタンを押した状態
                 //pp.Accele(gamepad.LTrigger.value);
@@ -120,7 +108,7 @@ public class SPlayerStatusK : MonoBehaviour
                     direction.y = -0.3f;
                 }
 
-                
+
                 float mouse_move_x = Input.GetAxis("Mouse X") * mouseSensitivity;
                 float mouse_move_y = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
@@ -199,8 +187,9 @@ public class SPlayerStatusK : MonoBehaviour
         //射撃SE再生
         SEManager.Instance.Play(SEPath.DRONE_SHOOT, 0.3f, 0, 1, false, null);
         GameObject go = Instantiate(bullet, emitter.transform.position, Quaternion.identity);
-        go.GetComponent<Rigidbody>().AddForce(transform.forward * 500);
-        BulletEnergyObject.GetComponent<SBulletEnergy>().ConsumeEnergy();
+        //go.GetComponent<Rigidbody>().AddForce(transform.forward * 500);
+        go.GetComponent<Rigidbody>().AddForce(emitter.transform.forward * 500);
+        bulletEnergy.ConsumeEnergy();
     }
 
 
@@ -235,6 +224,10 @@ public class SPlayerStatusK : MonoBehaviour
     bool FlySE_On = false;
 
     [SerializeField] float mouseSensitivity = 0.1f; // いわゆるマウス感度
+
+    //GameObject BulletEnergyObject;
+    [SerializeField] private SBulletEnergy bulletEnergy = null;
+
 
     public bool IsPower_On()
     {

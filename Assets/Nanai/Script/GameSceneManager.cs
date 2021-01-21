@@ -28,7 +28,7 @@ public class GameSceneManager : MonoBehaviour
     {
         if (State == 0)
         {
-            if (!Player.GetComponent<SPlayerStatusK>().IsPower_On())
+            if (!Player.GetComponent<SPlayerStatusKNC>().IsPower_On())
             {
                 AreaError = true;
             }
