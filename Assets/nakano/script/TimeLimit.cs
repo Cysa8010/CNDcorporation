@@ -20,12 +20,14 @@ public class TimeLimit : MonoBehaviour
 
     //　前回Update時の秒数
     private float oldSeconds;
-    private Text timerText;
+
+
+    [SerializeField] private Text timerText;
 
     private void Start()
     {
         totalTime = minute * 60 + seconds;
-        timerText = GetComponentInChildren<Text>();
+        //timerText = GetComponentInChildren<Text>();
     }
 
     private void Update()

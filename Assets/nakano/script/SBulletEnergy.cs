@@ -15,7 +15,7 @@ public class SBulletEnergy : MonoBehaviour
     public float charge;  //何もしてないと補充
     public float consume; //エネルギー使用量
 
-    private Image image;
+    [SerializeField] private Image image;
 
   
    
@@ -23,7 +23,7 @@ public class SBulletEnergy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        image = this.GetComponent<Image>();
+        //image = this.GetComponent<Image>();
     }
 
     // Update is called once per frame

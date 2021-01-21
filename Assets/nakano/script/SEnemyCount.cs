@@ -5,24 +5,25 @@ using UnityEngine.UI;
 
 public class SEnemyCount : MonoBehaviour
 {
-    public GameObject defobj;
-    public Text text;
+    //public GameObject gameManager;
+    [SerializeField] private GameSceneManager gameManager = null;
+    [SerializeField] private Text text;
 
     // Start is called before the first frame update
     void Start()
     {
-        text.text = "MISSION  0 / 3";
+        text.text = "残敵数: 0 / 0";
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(defobj==null)
+        if(gameManager == null)
 		{
-            text.text = "ターゲット名 : Unknown\n残敵数: 0 / 0";
+            text.text = "残敵数: 0 / 0";
             return;
         }
-        text.text = defobj.GetComponent<GameSceneManager>().GetEnemyCount() + " / 3";
+        text.text = "残敵数: " + gameManager.GetEnemyCount() + " / " + gameManager.GetMaxEnemy();
 
     }
 }

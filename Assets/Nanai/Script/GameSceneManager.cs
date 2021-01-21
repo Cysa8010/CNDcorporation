@@ -7,7 +7,8 @@ public class GameSceneManager : MonoBehaviour
     int i;
     bool AreaError;
     float CurrentTime;
-    [SerializeField] int EnemyNum;
+    private int EnemyNum;
+    [SerializeField] int MaxEnemyNum = 0;
     [SerializeField] GameObject GameClearImage;
     [SerializeField] GameObject GameOverImage;
     [SerializeField] GameObject PlayAreaErrorImage;
@@ -19,6 +20,7 @@ public class GameSceneManager : MonoBehaviour
     void Start()
     {
         i = 0;
+        EnemyNum = MaxEnemyNum;
         State = 0;
         AreaError = false;
     }
@@ -87,8 +89,13 @@ public class GameSceneManager : MonoBehaviour
 
     public int GetEnemyCount()
     {
-        return i;
+        return EnemyNum;
     }
+
+    public int GetMaxEnemy()
+	{
+        return MaxEnemyNum;
+	}
 
 
 
