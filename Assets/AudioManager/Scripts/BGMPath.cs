@@ -9,6 +9,8 @@ public static class BGMPath{
 	public const string FANTASY14   = "BGM/Default/fantasy14";
 	public const string GAME_BGM    = "BGM/game_BGM";
 	public const string HEARTBEAT01 = "BGM/Default/heartbeat01";
+	public const string MENU_BGM    = "BGM/menu_BGM";
+	public const string RESULT_BGM  = "BGM/result_BGM";
 	public const string TITLE_BGM   = "BGM/title_BGM";
 
 }
