@@ -12476,7 +12476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioClip: {fileID: 8300000, guid: cdaa503ea7e21204bb1ccbe6b572bb0f, type: 3}
   _isAutoPlay: 1
-  _volumeRate: 1
+  _volumeRate: 0.5
   _delay: 0
   _pitch: 1
   _fadeInDuration: 1
