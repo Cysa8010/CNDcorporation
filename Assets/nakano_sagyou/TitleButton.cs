@@ -38,4 +38,17 @@ public class TitleButton : MonoBehaviour
 
     }
 
+    public void OnClick()
+    {
+        if (!scene)
+        {
+            Debug.Log("Null");
+            return;
+        }
+        // ここにSE
+        //SEManager.Instance.Play(SEPath.KEY_ENTER);
+        scene.ChangeScene(sceneIndex);
+    }
+    [SerializeField] private SSceneManager scene = null;
+    [SerializeField] private int sceneIndex = 0;
 }

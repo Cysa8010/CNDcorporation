@@ -355,6 +355,7 @@ GameObject:
   - component: {fileID: 444266931}
   - component: {fileID: 444266934}
   - component: {fileID: 444266935}
+  - component: {fileID: 444266936}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -425,8 +426,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 444266935}
+      - m_Target: {fileID: 444266934}
         m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 444266936}
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -491,6 +503,8 @@ MonoBehaviour:
   - {r: 1, g: 1, b: 1, a: 0}
   alpha: 0
   alpha_Sin: 0
+  scene: {fileID: 1242463308}
+  sceneIndex: 0
 --- !u!114 &444266935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,7 +512,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444266929}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fac1f0dd172fcb34e8c99643d74b7b81, type: 3}
   m_Name: 
@@ -507,6 +521,25 @@ MonoBehaviour:
   button: {fileID: 444266931}
   eventSystem: {fileID: 787962334}
   sceneIndex: 0
+--- !u!114 &444266936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444266929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84080b8f483464c93845cb502049e7eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 8300000, guid: 87085a0556126d34e83170432dcce18b, type: 3}
+  _isAutoPlay: 0
+  _volumeRate: 1
+  _delay: 0
+  _pitch: 1
+  _fadeInDuration: 0
+  _isLoop: 0
 --- !u!1 &509379235
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,6 +792,7 @@ GameObject:
   - component: {fileID: 787962335}
   - component: {fileID: 787962334}
   - component: {fileID: 787962333}
+  - component: {fileID: 787962336}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -773,7 +807,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 787962332}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
@@ -814,6 +848,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &787962336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787962332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4200b93bec8fc4aac74185850c1310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EnableMouse: 0
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
 --- !u!1 &893279686
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,7 +935,7 @@ Canvas:
   m_GameObject: {fileID: 893279686}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -985,7 +1039,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Please Press Any Button
+  m_Text: Please Press Enter Key
 --- !u!222 &975227438
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1005,7 +1059,6 @@ GameObject:
   - component: {fileID: 1242463309}
   - component: {fileID: 1242463308}
   - component: {fileID: 1242463311}
-  - component: {fileID: 1242463312}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -1062,32 +1115,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioClip: {fileID: 8300000, guid: 5f19a8e791b960c4bb9742657c54b43f, type: 3}
   _isAutoPlay: 1
-  _volumeRate: 1
+  _volumeRate: 0.5
   _delay: 0
   _pitch: 1
   _fadeInDuration: 1
   _fadeOutDuration: 1
   _isLoop: 1
   _isAutoStop: 1
---- !u!114 &1242463312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242463307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84080b8f483464c93845cb502049e7eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _audioClip: {fileID: 8300000, guid: 87085a0556126d34e83170432dcce18b, type: 3}
-  _isAutoPlay: 0
-  _volumeRate: 1
-  _delay: 0
-  _pitch: 1
-  _fadeInDuration: 0
-  _isLoop: 0
 --- !u!1 &1491893723
 GameObject:
   m_ObjectHideFlags: 0
